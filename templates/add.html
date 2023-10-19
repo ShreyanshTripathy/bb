@@ -1,0 +1,10 @@
+{%include 'header.html'%}
+{% from "bootstrap5/form.html" import render_form %}
+<div class="container mt-5">
+    <h1>Add Event</h1>
+    {{ render_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+</div>
+  
+{%include 'footer.html'%}
+</body>
+</html>
