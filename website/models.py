@@ -27,11 +27,21 @@ class Event(db.Model):
     matches = db.relationship('Match')
 
 
+class Team(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    member_name = db.Column(db.String(100), nullable=False)
+    team_name = db.Column(db.String(100), nullable=False)
+    captain = db.Column(db.Boolean, default=False)
+
+    matches = db.relationship('Match')
+
 class Match(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    team_a = db.Column(db.String(100), nullable=False)
-    team_b = db.Column(db.String(100), nullable=False)
+    team_a_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)
+    team_b_id = db.Column(db.Integer, db.ForeignKey('team.id'), nullable=False)
     date_time = db.Column(db.DateTime, default=func.now())
+    team_a_score = db.Column(db.Integer)
+    team_a_score = db.Column(db.Integer)
 
     admin_id = db.Column(db.Integer, db.ForeignKey('admin.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)

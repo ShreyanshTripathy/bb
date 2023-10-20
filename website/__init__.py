@@ -21,7 +21,9 @@ def create_app():
     db.init_app(app)
 
     from .views import views
+    from .auth import auth
     app.register_blueprint(views)
+    app.register_blueprint(auth)
 
 
     with app.app_context():

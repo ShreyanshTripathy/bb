@@ -30,8 +30,44 @@
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('home')}}">Home</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('add_Event')}}">add_Event</a></li>
                     <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="{{url_for('contact')}}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="">Login</a></li>
+                    
+
+                    <!-- this code is created to delete after the sign-up -->
+                    <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="">Sign-up</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+
+    <!--    Flash Messages      -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+
+            <!--    Failure Flash Message-->
+            {% if category=='error' %}
+            <div class="alert alert-warning alter-dismissable fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% else %}
+    <!--        Success Flash Message-->
+                <div class="alert alert-success alter-dismissable fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+        {% endfor %}
+        {% endif %}
+{% endwith %}
+
+
+
+
 </body>
